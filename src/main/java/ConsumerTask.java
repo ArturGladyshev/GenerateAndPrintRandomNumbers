@@ -1,13 +1,16 @@
-public class ConsumerTask implements Runnable{
-    GenerateAndPrintRandomNumbers generateAndPrintRandomNumbers;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-    ConsumerTask(GenerateAndPrintRandomNumbers generateAndPrintRandomNumbers) {
-        this.generateAndPrintRandomNumbers = generateAndPrintRandomNumbers;
-    }
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class ConsumerTask implements Runnable {
+
+    private GenerateRandomNumbersWithPrint generateRandomNumbersWithPrint;
+
     @Override
     public void run() {
         while (true) {
-            generateAndPrintRandomNumbers.consume();
+            generateRandomNumbersWithPrint.consume();
         }
     }
 }

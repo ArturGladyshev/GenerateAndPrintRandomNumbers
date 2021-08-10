@@ -1,12 +1,18 @@
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProducerTask implements Runnable {
 
-   GenerateAndPrintRandomNumbers generateAndPrintRandomNumbers;
+    /*Добавление строчки while (true) в метод run зациклит поток на выполнение метода produce,
+     для наглядности поток выполняет метод один раз.
+    */
 
-    ProducerTask(GenerateAndPrintRandomNumbers generateAndPrintRandomNumbers) {
-       this.generateAndPrintRandomNumbers = generateAndPrintRandomNumbers;
-    }
+    private GenerateRandomNumbersWithPrint generateRandomNumbersWithPrint;
+
     @Override
     public void run() {
-            generateAndPrintRandomNumbers.produce();
+            generateRandomNumbersWithPrint.produce();
         }
-}
+    }
